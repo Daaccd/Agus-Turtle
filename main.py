@@ -1,6 +1,4 @@
-from src.game import Game
+import src.main
 
 if __name__ == "__main__":
-    gameInstance = Game()
-
-    gameInstance.gameLoop()
+    src.main.run_game()
