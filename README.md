@@ -5,7 +5,15 @@
 ## Deskripsi
 Agus Turtle : Petualangan Mencari Tangan adalah sebuah game puzzle platformer yang memberikan pengalaman bermain yang menyenangkan dan menantang, pemain akan bermain sebagai Agus seekor kura-kura(turtle), dimana Agus berusaha untuk mencari tangan tetapi hal itu tidak akan mudah dicapai karena terdapat banyak rintangan yang akan menghalangi Agus untuk mencapai tujuannya, akankah Agus akan berhasil mencari tangan atau tidak?, semua itu akan tergantung pada pemain...
 
+## Library
 
+## Cara menjalankan aplikasi
+
+## UML Class Diagram
+
+## Kontributor
+
+## Referensi
 
 
 
