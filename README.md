@@ -1,5 +1,7 @@
 <h1 align="center">Agus Turtle : Petualangan Mencari Tangan</h1>
 
+[![forthebadge]([![forthebadge](file:///C:/Users/Abimayu/Downloads/powered-by-pygame.svg)](https://forthebadge.com))](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-python.png)](https://forthebadge.com)
+
 
 
 ## Deskripsi
@@ -19,48 +21,3 @@ Agus Turtle : Petualangan Mencari Tangan adalah sebuah game puzzle platformer ya
 |Roberto Charlos Sagala|123140113||
 
 ## Referensi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![Python](https://img.shields.io/badge/Python-3.11-yellow.svg)
-![Pygame](https://img.shields.io/badge/Pygame-%2314354C.svg?logo=pygame)
