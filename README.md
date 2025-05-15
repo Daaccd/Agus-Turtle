@@ -1,6 +1,6 @@
 <h1 align="center">Agus Turtle : Petualangan Mencari Tangan</h1>
 
-[![forthebadge]([![forthebadge](file:///C:/Users/Abimayu/Downloads/powered-by-pygame.svg)](https://forthebadge.com))](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-python.png)](https://forthebadge.com)
+[![forthebadge](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDkuOTUwMDA0NTc3NjM2NzIiIGhlaWdodD0iMzUiIHZpZXdCb3g9IjAgMCAyMDkuOTUwMDA0NTc3NjM2NzIgMzUiPjxyZWN0IHdpZHRoPSIxMjEuMzMzMzM1ODc2NDY0ODQiIGhlaWdodD0iMzUiIGZpbGw9IiNmOGU3MWMiLz48cmVjdCB4PSIxMjEuMzMzMzM1ODc2NDY0ODQiIHdpZHRoPSI4OC42MTY2Njg3MDExNzE4OCIgaGVpZ2h0PSIzNSIgZmlsbD0iI2Y1YTYyMyIvPjx0ZXh0IHg9IjYwLjY2NjY2NzkzODIzMjQyIiB5PSIyMS41IiBmb250LXNpemU9IjEyIiBmb250LWZhbWlseT0iJ1JvYm90bycsIHNhbnMtc2VyaWYiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIyIj5QT1dFUkVEIEJZPC90ZXh0Pjx0ZXh0IHg9IjE2NS42NDE2NzAyMjcwNTA3OCIgeT0iMjEuNSIgZm9udC1zaXplPSIxMiIgZm9udC1mYW1pbHk9IidNb250c2VycmF0Jywgc2Fucy1zZXJpZiIgZmlsbD0iI0ZGRkZGRiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9IjkwMCIgbGV0dGVyLXNwYWNpbmc9IjIiPlBZR0FNRTwvdGV4dD48L3N2Zz4=)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-python.png)](https://forthebadge.com)
 
 
 
