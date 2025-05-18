@@ -1,6 +1,6 @@
 <h1 align="center">Agus Turtle : Petualangan Mencari Tangan</h1>
 <p align="center">
-  <img src="Assets/kurakura.png" height="256px" />
+  <img src="Assets/Images/kurakura.png" height="256px" />
 </p>
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.png)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
