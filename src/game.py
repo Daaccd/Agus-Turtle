@@ -28,13 +28,17 @@ class Game:
         self.level_completed = False
         return True
 
-    def handle_event(self, event: pygame.event.Event):
+    # Perbaiki signature handle_event di kelas Game - tidak perlu menerima 'player' di sini
+    def handle_event(self, event: pygame.event.Event): # <-- Signature yang benar
         if self.player:
             self.player.handle_event(event)
-        # also forward event to level (for levers, etc.)
+        # also forward event to level (for levers, etc.), PASSING THE PLAYER
         if self.current_level:
-            self.current_level.handle_event(event)
+            # Panggilan ini SUDAH BENAR meneruskan objek player ke level
+            self.current_level.handle_event(event, self.player)
 
+
+    # Metode update sudah benar
     def update(self):
         if not self.player or not self.current_level:
             return
@@ -43,8 +47,9 @@ class Game:
             self.current_level.static_obstacles,
             self.current_level.movable_walls
         )
-        # update level (e.g. moving platforms)
-        self.current_level.update()
+        # update level (e.g. moving platforms), PASSING THE PLAYER
+        # Panggilan ini SUDAH BENAR meneruskan objek player ke update level
+        self.current_level.update(self.player)
 
         # check for level completion (player reaches door)
         if self.player.rect.colliderect(self.current_level.door_rect):
