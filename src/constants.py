@@ -7,8 +7,8 @@ SCREEN_HEIGHT = 600
 
 # Physics
 GRAVITY           = 0.5
-BOB_SPEED         = 5
-MOVABLE_WALL_SPEED = 2
+BOB_SPEED         = 3.5
+MOVABLE_WALL_SPEED = 3.5
 
 # Colors (R, G, B)
 BLACK    = (0,   0,   0)

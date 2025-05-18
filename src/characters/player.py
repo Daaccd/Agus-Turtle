@@ -34,6 +34,8 @@ class Player(pygame.sprite.Sprite):
                     self.rect.right = block.left
                     self.moving = False
                     break
-
+        
+        print(f"[PLAYER POS] x: {self.rect.x}, y: {self.rect.y}")
+        
     def draw(self, surface: pygame.Surface):
         surface.blit(self.image, self.rect.topleft)
