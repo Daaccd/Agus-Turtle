@@ -9,22 +9,28 @@ class Level1:
         self.resources = resources
 
         # Definisi obstacle: lantai + satu platform yang bisa dinaikkan
-        self.obstacles = [
-            pygame.Rect(0,   550, 800, 50),
-            pygame.Rect(300, 450, 100, 20),
-        ]
+        ground_rect = pygame.Rect(0, 550, 800, 50)
+        ground_top  = ground_rect.top  # 550
 
-        # Batas target naik
+        # Obstacle: ground + platform
+        self.obstacles = [
+            ground_rect,
+            # Mulai platform tepat di atas ground
+            pygame.Rect(300, 550, 200, 20),
+        ]
+        
         self.platform_target_y = 300
 
         # Load dan cache tile image
         self.block_img = resources.load_image("block")
-        self.orig_w, _ = self.block_img.get_size()
+        # self.orig_w, _ = self.block_img.get_size()
         
         self._cache = {}
 
-        # Buat lever di samping platform kedua
-        lever_x = 200
+        # Buat lever di samping platform
+        plat_rect = self.obstacles[1]
+        lever_x = 100
+        # Pastikan lever berdiri tepat di atas platform
         lever_y = 480
         self.lever = Lever((lever_x, lever_y), resources)
 
@@ -35,33 +41,23 @@ class Level1:
                 if self.lever.is_player_near(self.player.rect):
                     self.lever.toggle()
 
-        # Animate platform
+        # Animate platform: naik ke target jika aktif, turun ke posisi awal jika tidak
         plat = self.obstacles[1]
+        start_y = self.obstacles[0].top - plat.height  # ground_top - height
         if self.lever.active and plat.y > self.platform_target_y:
             plat.y -= int(100 * dt)
             if plat.y < self.platform_target_y:
                 plat.y = self.platform_target_y
-        elif not self.lever.active and plat.y < 450:
+        elif not self.lever.active and plat.y < start_y:
             plat.y += int(100 * dt)
-            if plat.y > 450:
-                plat.y = 450
-
-    def draw(self, screen):
+            if plat.y > start_y:
+                plat.y = start_y
+            
         # Tile semua obstacles dengan block.png
-        def draw(self, screen):
-            for rect in self.obstacles:
-                # Hanya stretch vertikal
-                h = rect.height
-                # cache per-height untuk performa
-                if h not in self._cache:
-                    tile = pygame.transform.scale(self.block_img, (self.orig_w, h))
-                    self._cache[h] = tile
-                tile = self._cache[h]
+    def draw(self, screen):
+        for rect in self.obstacles:
+            scaled = pygame.transform.scale(self.block_img, (rect.width, rect.height))
+            screen.blit(scaled, rect.topleft)
 
-                # hitung jumlah tile horizontal
-                count = math.ceil(rect.width / self.orig_w)
-                for i in range(count):
-                    x = rect.x + i * self.orig_w
-                    screen.blit(tile, (x, rect.y))
-
-            self.lever.draw(screen)
+        # Gambar lever di atas
+        self.lever.draw(screen)
