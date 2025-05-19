@@ -1,7 +1,7 @@
 import pygame, math
 from src.constants import COLOR_BROWN
 from src.components.lever import Lever
-from 
+from src.utils.resource_manager import ResourceManager
 
 class Level1:
     def __init__(self, player, resources):
@@ -20,6 +20,7 @@ class Level1:
         # Load dan cache tile image
         self.block_img = resources.load_image("block")
         self.orig_w, _ = self.block_img.get_size()
+        
         self._cache = {}
 
         # Buat lever di samping platform kedua
