@@ -36,10 +36,10 @@ class Level2:
         self.bridge_platforms_rects.append(pygame.Rect(top_bridge_platform_x, top_bridge_platform_y, top_bridge_platform_width, 25))
 
         # Platform yang diganti menjadi bridge.png (tempat box berada di screenshot)
-        second_platform_x = 150
-        second_platform_y = SCREEN_HEIGHT - 250
+        second_platform_x = 100
+        second_platform_y = SCREEN_HEIGHT - 300
         # Simpan Rect ini untuk nanti digunakan menentukan posisi awal box
-        second_bridge_rect_for_box = pygame.Rect(second_platform_x, second_platform_y, 100, 30) # Sesuaikan tinggi jika perlu
+        second_bridge_rect_for_box = pygame.Rect(second_platform_x, second_platform_y, 100, 20) # Sesuaikan tinggi jika perlu
         self.bridge_platforms_rects.append(second_bridge_rect_for_box) # Tambahkan ke list platform bridge
 
 
@@ -62,10 +62,10 @@ class Level2:
         # Blok puzzle (menggunakan gambar box.png)
         puzzle_block_size = 50
         # Posisikan blok puzzle di atas second_bridge_rect_for_box
-        puzzle_block_x = second_bridge_rect_for_box.x + (second_bridge_rect_for_box.width // 2) - (puzzle_block_size // 2) # Sesuaikan dengan lebar second_bridge_rect_for_box
+        puzzle_block_x = second_bridge_rect_for_box.x + (second_bridge_rect_for_box.width // 2.5) - (puzzle_block_size // 2) # Sesuaikan dengan lebar second_bridge_rect_for_box
         # >>> Sesuaikan posisi Y agar ada sedikit jarak visual dari platform di bawahnya <<<
         # Kurangi beberapa piksel tambahan dari tepi atas platform
-        puzzle_block_y = second_bridge_rect_for_box.y - puzzle_block_size - 2 # Contoh: kurangi 2 piksel lagi
+        puzzle_block_y = second_bridge_rect_for_box.y - puzzle_block_size - 50 # Contoh: kurangi 2 piksel lagi
         puzzle_block_rect = PuzzleBlock(puzzle_block_x, puzzle_block_y, puzzle_block_size, puzzle_block_size, MOVABLE_WALL_SPEED) # Gunakan PuzzleBlock
         self.movable_walls    = [puzzle_block_rect] # Masukkan blok puzzle ke dinding bergerak
 

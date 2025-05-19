@@ -1,76 +1,107 @@
-# src/game.py
 import pygame
-from src.constants import BLACK
+from pathlib import Path
+from src.utils.resource_manager import ResourceManager
 from src.characters.player import Player
-from src.scene.level1   import Level1  # import Level 1
-from src.scene.level2 import Level2 # Import Level 2
+from src.scene.main_menu   import MainMenu
+from src.scene.level_select import LevelSelect
+from src.scene.level1      import Level1
+from src.constants import *
 
 class Game:
-    def __init__(self, screen: pygame.Surface, images: dict):
-        self.screen      = screen
-        self.images      = images
-        self.player: Player | None = None
+    STATE_MENU        = 0
+    STATE_LEVEL_SELECT= 1
+    STATE_PLAYING     = 2
+    STATE_OPTION      = 3
+    STATE_GAMEOVER    = 4
 
-        # level data & objects
-        self.current_level = None
-        self.level_completed = False
+    def __init__(self, screen):
+        self.screen = screen
+        self.clock  = pygame.time.Clock()
+        self.state  = Game.STATE_MENU
 
-    # Modifikasi metode start_level untuk mengenali level_num = 2
-    def start_level(self, level_num: int) -> bool:
-        if level_num == 1:
-            self.current_level = Level1(self.images)
-        elif level_num == 2: # Tambahkan blok ini untuk Level 2
-            self.current_level = Level2(self.images)
-        else:
-            print(f"Level {level_num} not implemented.")
-            return False
+        # Resource Manager
+        base_dir = Path(__file__).resolve().parent.parent
+        img_dir  = base_dir / IMAGES_DIR
+        self.resources = ResourceManager(img_dir)
 
-        # instantiate player at the level’s start
-        start_pos = self.current_level.player_start
-        self.player = Player(self.images['bob'], start_pos)
+        # Scenes dan level
+        self.menu        = MainMenu(self.screen)
+        self.level_sel   = LevelSelect(self.screen)
+        self.level       = None
+        self.player      = None
 
-        self.level_completed = False
-        return True
+    def run(self):
+        while True:
+            dt = self.clock.tick(FPS) / 1000
+            self._handle_events()
+            self._update(dt)
+            self._draw()
 
-    # Signature handle_event di kelas Game tetap tidak berubah
-    def handle_event(self, event: pygame.event.Event):
-        if self.player:
-            self.player.handle_event(event)
-        # also forward event to level (for levers, etc.), PASSING THE PLAYER
-        if self.current_level:
-            # Panggilan ini meneruskan objek player ke level
-            self.current_level.handle_event(event, self.player)
+    def _handle_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
 
+            if self.state == Game.STATE_MENU:
+                choice = self.menu.handle_input(event)
+                if choice == "Start Game":
+                    self.state = Game.STATE_LEVEL_SELECT
+                elif choice == "Options":
+                    self.state = Game.STATE_OPTION
+                elif choice == "Exit":
+                    pygame.quit(); exit()
 
-    # Metode update - memastikan player diteruskan ke level.update
-    def update(self):
-        if not self.player or not self.current_level:
-            return
-        # update player (physics & collisions)
-        self.player.update(
-            self.current_level.static_obstacles,
-            self.current_level.movable_walls
-        )
-        # update level (e.g. moving platforms), PASSING THE PLAYER
-        # Panggilan ini meneruskan objek player ke update level
-        self.current_level.update(self.player)
+            elif self.state == Game.STATE_LEVEL_SELECT:
+                choice = self.level_sel.handle_input(event)
+                if choice in LEVELS:
+                    # instantiate level & player
+                    bob = self.resources.load_image("bob")
+                    self.player = Player((100, 500), bob)
+                    # only Level1 for now
+                    self.level  = Level1(self.player, self.resources)
+                    self.state  = Game.STATE_PLAYING
+                elif choice == "Back":
+                    self.state = Game.STATE_MENU
 
-        # check for level completion (player reaches door)
-        if self.player.rect.colliderect(self.current_level.door_rect):
-            self.level_completed = True # Set level_completed jika player mencapai pintu
-            # Opsi: Reset level_completed setelah beralih state di main.py jika diinginkan
+            elif self.state == Game.STATE_PLAYING:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                    self.state = Game.STATE_OPTION
+                self._pass_to_play(event)
 
+            elif self.state == Game.STATE_OPTION:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.state = Game.STATE_MENU
 
-    def draw(self):
-        # clear
-        # Gunakan warna latar level, fallback ke hitam
-        self.screen.fill(self.current_level.background_color or BLACK)
-        # draw static & moving blocks
-        self.current_level.draw(self.screen, self.images['block'])
-        # draw levers, etc.
-        self.current_level.draw_overlays(self.screen, self.images)
-        # draw player & door
-        if self.player:
+    def _pass_to_play(self, event):
+        # biarkan Player menerima input non-menu
+        # misal pause ditangani di option
+        pass
+
+    def _update(self, dt):
+        if self.state == Game.STATE_PLAYING:
+            keys = pygame.key.get_pressed()
+            self.player.handle_input(keys)
+            self.player.update(dt, self.level.obstacles)
+            self.level.update(dt)
+            if self.player.rect.top > SCREEN_HEIGHT:
+                self.state = Game.STATE_GAMEOVER
+
+    def _draw(self):
+        if self.state == Game.STATE_MENU:
+            self.menu.draw()
+        elif self.state == Game.STATE_LEVEL_SELECT:
+            self.level_sel.draw()
+        elif self.state == Game.STATE_PLAYING:
+            self.screen.fill(COLOR_SKY)
+            self.level.draw(self.screen)
             self.player.draw(self.screen)
-        # Gambar pintu
-        self.screen.blit(self.images['door'], self.current_level.door_rect.topleft)
+        elif self.state == Game.STATE_OPTION:
+            self.screen.fill((50, 50, 50))  # placeholder
+        elif self.state == Game.STATE_GAMEOVER:
+            self.screen.fill((0, 0, 0))
+            font = pygame.font.SysFont(None, 72)
+            surf = font.render("Game Over - Press Esc", True, COLOR_WHITE)
+            rect = surf.get_rect(center=self.screen.get_rect().center)
+            self.screen.blit(surf, rect)
+        pygame.display.flip()
