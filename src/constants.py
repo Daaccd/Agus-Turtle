@@ -1,17 +1,27 @@
-# constants.py
-# Centralized parameters & colors
+# Konstanta dasar aplikasi
 
-# Screen
-SCREEN_WIDTH  = 800
+# Tampilan
+SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+FPS = 60
+MOVABLE_WALL_SPEED = 100
 
-# Physics
-GRAVITY           = 0.5
-GRAVITY_BOOST     = 1.5
-BOB_SPEED         = 3.5
-MOVABLE_WALL_SPEED = 3.5
-JUMP_STRENGTH     = -12
+# Warna (RGB)
+COLOR_SKY    = (135, 206, 235)
+COLOR_BROWN  = (139, 69, 19)
+COLOR_WHITE  = (255, 255, 255)
+COLOR_HIGHLIGHT = (255, 215, 0)
 
-# Colors (R, G, B)
-BLACK    = (0,   0,   0)
-BLUE_SKY = (135, 206, 235)
+# Fisika pemain
+GRAVITY       = 800       # px/s²
+PLAYER_SPEED  = 200       # px/s
+JUMP_STRENGTH = -500
+
+# Paths
+ASSETS_DIR  = "assets"
+IMAGES_DIR  = ASSETS_DIR + "/images"
+
+
+# Menu
+MENU_ITEMS       = ["Start Game", "Options", "Exit"]
+LEVELS           = ["Level 1","Level 2","Level 3"]  # bisa ditambah Level 2, dst.
