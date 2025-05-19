@@ -1,7 +1,5 @@
 from pathlib import Path
-import pygame
-import sys
-import logging
+import pygame, sys, logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -9,7 +7,7 @@ logger = logging.getLogger(__name__)
 class ResourceManager:
     def __init__(self, base_path: Path):
         self.base_path = base_path
-        self.cache = {}
+        self.cache     = {}
 
     def load_image(self, name: str) -> pygame.Surface:
         if name in self.cache:
