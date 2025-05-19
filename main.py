@@ -11,8 +11,4 @@ def main():
     pygame.quit()
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     main()
-=======
-    main()
->>>>>>> 066713d7379e26e752460a32ca73c8cee73c0ca0
