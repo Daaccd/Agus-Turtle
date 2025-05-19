@@ -83,6 +83,9 @@ class Game:
             # 3) Update logika level (lever, animasi platform, dll.)
             self.level.update(dt, keys, self.events)
             
+            if getattr(self.level, "completed", False):
+                self.state = Game.STATE_LEVEL_SELECT
+            
             # cek game over
             if self.player.rect.top > SCREEN_HEIGHT:
                 self.state = Game.STATE_GAMEOVER
