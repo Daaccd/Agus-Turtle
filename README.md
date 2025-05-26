@@ -38,7 +38,10 @@ Agus Turtle : Petualangan Mencari Tangan adalah sebuah game puzzle platformer ya
 ## Kontributor
 |Nama|NIM|Peran|
 |-|-|-|
-|Brahmantio Abimayu|123140122||
-|Roberto Charlos Sagala|123140113||
+|Brahmantio Abimayu|123140122|Project Leader, Programmer|
+|Roberto Charlos Sagala|123140113|Lead Programmer, Designer|
+|Zacky Ghozi A|123140130|Programmer, Composer|
+|Danar Prayogo|123140015|Programmer, Designer|
+|Yeremia Situmorang|123140048|Programmer, Desginer|
 
 ## Referensi
