@@ -1,7 +1,7 @@
 # src/scene/main_menu.py
 
 import pygame
-from src.constants import MENU_ITEMS, COLOR_WHITE, COLOR_HIGHLIGHT, SCREEN_WIDTH
+from src.constants import MENU_ITEMS, COLOR_WHITE, COLOR_SKY, COLOR_HIGHLIGHT, SCREEN_WIDTH
 
 class MainMenu:
     def __init__(self, screen):
@@ -47,7 +47,7 @@ class MainMenu:
         pass
 
     def draw(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill(COLOR_SKY)
         for idx, item in enumerate(MENU_ITEMS):
             color = COLOR_HIGHLIGHT if idx == self.selected else COLOR_WHITE
             surf = self.font.render(item, True, color)

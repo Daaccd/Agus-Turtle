@@ -6,7 +6,7 @@ from src.scene.main_menu   import MainMenu
 from src.scene.level_select import LevelSelect
 from src.scene.level1      import Level1
 from src.scene.level2      import Level2
-from src.scene.level3      import Level3 # Pastikan Level3 juga diimpor jika ada
+from src.scene.level3      import Level3
 from src.constants import *
 
 class Game:

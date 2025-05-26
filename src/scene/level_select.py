@@ -1,5 +1,5 @@
 import pygame
-from src.constants import LEVELS, COLOR_WHITE, COLOR_HIGHLIGHT, SCREEN_WIDTH
+from src.constants import LEVELS, COLOR_WHITE, COLOR_BROWN, COLOR_HIGHLIGHT, SCREEN_WIDTH
 
 class LevelSelect:
     def __init__(self, screen):
@@ -48,7 +48,7 @@ class LevelSelect:
         pass
 
     def draw(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill(COLOR_BROWN)
         for idx, lvl in enumerate(LEVELS):
             color = COLOR_HIGHLIGHT if idx == self.selected else COLOR_WHITE
             surf = self.font.render(lvl, True, color)
