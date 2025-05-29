@@ -45,3 +45,7 @@ Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman berm
 |Yeremia Situmorang|123140048|Programmer|
 
 ## Referensi
+- [Pygame GUI Documentation](https://pygame-gui.readthedocs.io/en/latest/)
+
+Referensi Game
+-[Snail Bob](https://www.games.co.id/permainan/game-bob-siput)
