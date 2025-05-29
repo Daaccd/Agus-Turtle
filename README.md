@@ -6,7 +6,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.png)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 ## Deskripsi Proyek
-Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman bermain yang pastinya menyenangkan dan menantang, pemain akan bermain sebagai Agus seekor kura-kura(turtle), dimana Agus berusaha untuk mencari tangan tetapi hal itu tidak akan mudah dicapai karena terdapat banyak rintangan yang akan menghalangi Agus untuk mencapai tujuannya, akankah Agus akan berhasil mencari tangan atau tidak?, mainkan dan saksikanlah kisah dari Agus.
+Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman bermain yang pastinya menyenangkan dan menantang, pemain akan bermain sebagai Agus seekor kura-kura(turtle), dimana Agus berusaha untuk mencari tangan tetapi hal itu tidak akan mudah dicapai karena terdapat banyak rintangan yang akan menghalangi Agus untuk mencapai tujuannya.
 
 ## Library
 [Python 3.11](https://www.python.org/downloads/release/python-3110) dan [Pygame](https://www.pygame.org) dibutuhkan untuk menjalankan aplikasi
