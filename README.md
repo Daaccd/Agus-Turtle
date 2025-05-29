@@ -1,4 +1,4 @@
-<h1 align="center">Agus Turtle : Petualangan Mencari Tangan</h1>
+<h1 align="center">Agus Turtle</h1>
 <p align="center">
   <img src="Assets/Images/kurakura.png" height="256px" />
 </p>
