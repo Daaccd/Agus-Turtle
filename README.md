@@ -38,7 +38,7 @@ Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman berm
 ## Kontributor
 |Nama|NIM|Peran|
 |-|-|-|
-|Brahmantio Abimayu|123140122|Project Leader, Programmer|
+|Brahmantio Abimayu|123140122|Project Leader, Programmer, Designer|
 |Roberto Charlos Sagala|123140113|Lead Programmer, Designer|
 |Zacky Ghozi A|123140130|Programmer, Composer|
 |Danar Prayogo|123140015|Programmer, Designer|
