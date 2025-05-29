@@ -4,6 +4,7 @@ from src.game import Game
 
 def main():
     pygame.init()
+    pygame.mixer.init()
     try:
         icon_path = os.path.join(IMAGES_DIR, "kurakura.png")
         game_icon = pygame.image.load(icon_path)

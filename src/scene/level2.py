@@ -41,10 +41,11 @@ class Lever(pygame.Rect):
 
 # Level 2
 class Level2:
-    def __init__(self, player, resources: ResourceManager):
+    def __init__(self, player, resources: ResourceManager, sfx_lever=None):
         self.player = player
         self.resources = resources
         self.player_start_pos = (50, SCREEN_HEIGHT - 100)
+        self.sfx_lever = sfx_lever
 
         # Gambar latar
         self.cloud1_img = self.resources.load_image("cloud1")
@@ -136,6 +137,8 @@ class Level2:
             if keys[pygame.K_e] and self._can_interact_lever:
                 self.lever.toggle()
                 self.door_open = not self.lever.is_up
+                if self.sfx_lever:
+                    self.sfx_lever.play()
                 self._can_interact_lever = False
                 self._lever_cooldown_timer = 0.5
         else:

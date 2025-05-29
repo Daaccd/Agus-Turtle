@@ -28,9 +28,12 @@ class Lever(pygame.Rect):
 
 
 class Level3:
-    def __init__(self, player, resources):
+    def __init__(self, player, resources, sfx_lever=None, sfx_key_pickup=None, sfx_lock_open=None):
         self.player = player
         self.resources = resources
+        self.sfx_lever = sfx_lever
+        self.sfx_key_pickup = sfx_key_pickup
+        self.sfx_lock_open = sfx_lock_open
 
         # --- Rintangan Statis (Obstacles) ---
         self.obstacles = [
@@ -178,6 +181,8 @@ class Level3:
                 # Gunakan player_rect yang dilewatkan
                 if player_rect.colliderect(self.key_red_rect): # <-- Gunakan player_rect di sini
                      self.player_has_key_red = True
+                     if self.sfx_key_pickup:
+                          self.sfx_key_pickup.play()
                      # Kunci diambil, tidak perlu lagi Rect fisik di list obstacles jika ada
 
             else: # Jika pemain sudah memiliki kunci (dan kunci belum digunakan)
@@ -196,6 +201,8 @@ class Level3:
                      if self.key_red_rect.colliderect(self.lock_red_rect):
                           self.is_lever_unlocked = True # Gembok terbuka!
                           self.key_used = True # Kunci sudah digunakan, jadi menghilang
+                          if self.sfx_lock_open:
+                               self.sfx_lock_open.play()
                           # Secara opsional, Anda bisa menghapus Rect gembok agar tidak ada tabrakan lagi
                           # self.lock_red_rect = None
 
@@ -211,6 +218,8 @@ class Level3:
                 # Deteksi input interaksi (hanya tombol E) saat bisa diinteraksi dan tidak cooldown
                 if keys[pygame.K_e] and self._can_interact_lever:
                      self.lever.toggle() # Ubah status tuas
+                     if self.sfx_lever:
+                          self.sfx_lever.play()
 
                      self._can_interact_lever = False
                      self._lever_cooldown_timer = 0.5

@@ -4,10 +4,11 @@ from src.utils.resource_manager import ResourceManager
 import math # Import modul math
 
 class Level1:
-    def __init__(self, player, resources):
+    def __init__(self, player, resources, sfx_lever=None):
         # --- PASTIKAN BARIS INI DI AWAL __init__ ---
         self.player = player
         self.resources = resources
+        self.sfx_lever = sfx_lever
         # --------------------------------------------
 
         # --- Rintangan Statis (Obstacles) ---
@@ -105,6 +106,8 @@ class Level1:
             keys = pygame.key.get_pressed()
             if keys[pygame.K_e] and self._can_interact_lever:
                  self.is_lever_up = not self.is_lever_up # Toggle status tuas
+                 if self.sfx_lever:
+                     self.sfx_lever.play()
 
                  # Aktifkan cooldown
                  self._can_interact_lever = False
