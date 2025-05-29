@@ -41,12 +41,8 @@ class Level3:
         self.block_img = self.resources.load_image("block")
         self.exit_img = self.resources.load_image("signExit")
         self.bridge_img = self.resources.load_image("bridge")
-
-        # Muat gambar tuas
         lever_up_orig = self.resources.load_image("lever_up")
         lever_down_orig = self.resources.load_image("lever_down")
-
-        # Muat aset kunci dan gembok
         key_red_orig = self.resources.load_image("keyRed")
         lock_red_orig = self.resources.load_image("lock_red")
 

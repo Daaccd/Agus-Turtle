@@ -55,6 +55,12 @@ class Level1:
         self.orig_grass_w = self.grass_img.get_width() # Lebar asli gambar grass untuk tiling
         self.orig_bridge_w = self.bridge_img.get_width() # Lebar asli gambar bridge untuk tiling
 
+        self.cloud1_img = self.resources.load_image("cloud1")
+        self.cloud2_img = self.resources.load_image("cloud2")
+        self.bush_img = self.resources.load_image("bush")
+        self.plant_img = self.resources.load_image("plant")
+        self.cactus_img = self.resources.load_image("cactus")
+        self.rock_img = self.resources.load_image("rock")
 
         self._block_cache = {} # Cache untuk scaled block images
         self._grass_cache = {} # Cache untuk scaled grass images
@@ -233,3 +239,12 @@ class Level1:
              text_surf = font.render("Press E", True, (255, 255, 255))
              text_rect = text_surf.get_rect(center=(self.lever_rect.centerx, self.lever_rect.top - 20))
              screen.blit(text_surf, text_rect)
+        
+        screen.blit(self.cloud1_img, (50, 40))
+        screen.blit(self.cloud1_img, (220, 80))
+        screen.blit(self.cloud1_img, (460, 100))
+        screen.blit(self.cloud1_img, (620, 60))
+        screen.blit(self.cactus_img, (0, 480))
+        screen.blit(self.plant_img, (40, 480))
+        screen.blit(self.bush_img, (180, 480))
+        screen.blit(self.rock_img, (600, 280))

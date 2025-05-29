@@ -2,11 +2,11 @@ import pygame
 from pathlib import Path
 from src.utils.resource_manager import ResourceManager
 from src.characters.player import Player
-from src.scene.main_menu   import MainMenu
+from src.scene.main_menu import MainMenu
 from src.scene.level_select import LevelSelect
-from src.scene.level1      import Level1
-from src.scene.level2      import Level2
-from src.scene.level3      import Level3
+from src.scene.level1 import Level1
+from src.scene.level2 import Level2
+from src.scene.level3 import Level3
 from src.constants import *
 
 class Game:
@@ -183,7 +183,7 @@ class Game:
             self.screen.blit(surf_inst, rect_inst)
 
         elif self.state == Game.STATE_LEVEL_CLEAR:
-            self.screen.fill(COLOR_SKY) # Latar langit atau warna lain
+            self.screen.fill(COLOR_BROWN) # Latar langit atau warna lain
             # Gambar teks Level Clear
             surf = self.font_large.render("Level Clear!", True, COLOR_WHITE)
             rect = surf.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 30))
