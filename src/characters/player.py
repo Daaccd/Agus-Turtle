@@ -6,7 +6,6 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.image = image
         self.rect  = self.image.get_rect(topleft=pos)
-
         self.vel = pygame.Vector2(0, 0)
         self.speed = PLAYER_SPEED
         self.gravity = GRAVITY
@@ -14,6 +13,7 @@ class Player(pygame.sprite.Sprite):
         self.on_ground = False
         self.sfx_jump = sfx_jump
 
+    # Control
     def handle_input(self, keys):
         self.vel.x = 0
         if keys[pygame.K_a]:

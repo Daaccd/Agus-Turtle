@@ -5,25 +5,20 @@ import math # Import modul math
 
 class Level1:
     def __init__(self, player, resources, sfx_lever=None):
-        # --- PASTIKAN BARIS INI DI AWAL __init__ ---
         self.player = player
         self.resources = resources
         self.sfx_lever = sfx_lever
-        # --------------------------------------------
 
-        # --- Rintangan Statis (Obstacles) ---
         self.obstacles = []
-
-        # Lantai dasar - Simpan referensi ke Rect ini agar mudah diidentifikasi saat menggambar
         self.ground_rect = pygame.Rect(0, 550, SCREEN_WIDTH, 50)
         self.obstacles.append(self.ground_rect)
 
-        # Platform yang akan digerakkan oleh tuas (Platform Utama yang Bergerak)
+
         movable_platform_width = 200
         movable_platform_height = 20
-        self.movable_platform_start_pos = pygame.Vector2(300, 530) # Posisi awal (di atas lantai)
-        self.movable_platform_target_y = 340 # Posisi target saat lever aktif (DISESUAIKAN)
-        self.movable_platform_speed = 100 # Kecepatan gerakan platform
+        self.movable_platform_start_pos = pygame.Vector2(300, 530)
+        self.movable_platform_target_y = 340
+        self.movable_platform_speed = 100
 
         self.movable_platform_rect = pygame.Rect(
              self.movable_platform_start_pos.x,
