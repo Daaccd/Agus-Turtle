@@ -2,7 +2,6 @@ import pygame
 
 class Lever:
     def __init__(self, pos, resources):
-        # Muat dua state lever
         self.image_off = resources.load_image("lever_down")
         self.image_on  = resources.load_image("lever_up")
         self.image     = self.image_off
