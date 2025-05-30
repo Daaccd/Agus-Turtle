@@ -34,6 +34,9 @@ Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman berm
     ```
 
 ## UML Class Diagram
+<p align="center">
+<img src="Assets/screenshot/uml_final.png" height="512px"/>
+</p>
 
 ## Kontributor
 |Nama|NIM|Peran|
