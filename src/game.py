@@ -1,5 +1,3 @@
-# src/game.py
-
 import pygame
 from pathlib import Path
 from src.utils.resource_manager import ResourceManager
@@ -63,7 +61,6 @@ class Game:
             self._draw()
 
     def _play_bgm(self, bgm_name: str):
-        """Fungsi pembantu untuk memainkan BGM."""
         if self.current_bgm == bgm_name and pygame.mixer.music.get_busy():
             return
 
@@ -75,7 +72,6 @@ class Game:
             print(f"Warning: BGM {bgm_name} tidak dapat dimuat atau dimainkan.")
 
     def _stop_bgm(self):
-        """Fungsi pembantu untuk menghentikan BGM."""
         pygame.mixer.music.stop()
         self.current_bgm = None
 
