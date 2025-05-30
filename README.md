@@ -48,6 +48,7 @@ Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman berm
 |Yeremia Situmorang|123140048|Programmer|
 
 ## Referensi
+- [The ultimate introduction to Pygame - YouTube](https://www.youtube.com/watch?v=AY9MnQ4x3zk)
 - [Pygame GUI Documentation](https://pygame-gui.readthedocs.io/en/latest/)
 
 Referensi Game
