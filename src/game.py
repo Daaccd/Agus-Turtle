@@ -75,7 +75,7 @@ class Game:
         self.level       = None
         self.player      = None
         
-        self.master_volume = random.uniform(0.2, 0.5)
+        self.master_volume = random.uniform(0.1, 0.3)
         pygame.mixer.music.set_volume(self.master_volume)
         
         self.level_clear_return_text = "Kembali ke Pemilihan Level"
