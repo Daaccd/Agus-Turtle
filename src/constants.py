@@ -15,7 +15,7 @@ JUMP_STRENGTH = -500
 ASSETS_DIR = "assets"
 IMAGES_DIR = ASSETS_DIR + "/images"
 
-MENU_ITEMS = ["Start Game", "Options", "Exit"]
+MENU_ITEMS = ["Start Game", "Credits", "Exit"]
 LEVELS = ["Level 1","Level 2","Level 3"]
 
 ASSETS_DIR = "assets"

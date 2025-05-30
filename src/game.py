@@ -131,7 +131,7 @@ class Game:
                 choice = self.menu.handle_input(event)
                 if choice == "Start Game":
                     self.state = Game.STATE_LEVEL_SELECT
-                elif choice == "Options":
+                elif choice == "Credits":
                     self.state = Game.STATE_OPTION 
                 elif choice == "Exit":
                     pygame.quit(); exit()
@@ -234,12 +234,12 @@ class Game:
         elif self.state == Game.STATE_OPTION:
             if not self.shared_background_image:
                 self.screen.fill((50, 50, 50))  
-            surf_title = self.font_large.render("Sound", True, COLOR_WHITE)
-            rect_title = surf_title.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 50))
+            surf_title = self.font_large.render("Made by Octagram", True, COLOR_WHITE)
+            rect_title = surf_title.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 - 0))
             self.screen.blit(surf_title, rect_title)
             
             surf_inst = self.font_medium.render("Press ESC to return", True, COLOR_WHITE)
-            rect_inst = surf_inst.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 20))
+            rect_inst = surf_inst.get_rect(center=(SCREEN_WIDTH//2, SCREEN_HEIGHT//2 + 120))
             self.screen.blit(surf_inst, rect_inst)
 
 
