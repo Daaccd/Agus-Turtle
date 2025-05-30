@@ -9,11 +9,10 @@ class Level1:
         self.player = player
         self.resources = resources
         self.sfx_lever = sfx_lever
-
         self.obstacles = []
+
         self.ground_rect = pygame.Rect(0, 550, SCREEN_WIDTH, 50)
         self.obstacles.append(self.ground_rect)
-
 
         movable_platform_width = 200
         movable_platform_height = 20
@@ -28,7 +27,7 @@ class Level1:
              movable_platform_height
         )
         self.obstacles.append(self.movable_platform_rect)
-        
+
         static_platform_width = 280
         static_platform_height = 200
         static_platform_x = 525
@@ -36,14 +35,15 @@ class Level1:
         self.static_platform_rect = pygame.Rect(static_platform_x, static_platform_y, static_platform_width, static_platform_height)
         self.obstacles.append(self.static_platform_rect)
 
-        self.block_img = self.resources.load_image("block")
+        self.block_img = self.resources.load_image("block") 
         self.grass_img = self.resources.load_image("grass")
+        self.bridge_img = self.resources.load_image("bridge")
         self.exit_img = self.resources.load_image("flag")
         self.lever_up_img = self.resources.load_image("lever_up")
         self.lever_down_img = self.resources.load_image("lever_down")
 
         self.orig_block_w = self.block_img.get_width()
-        self.orig_grass_w = self.grass_img.get_width()
+        self.orig_grass_w = self.grass_img.get_width() 
         self.orig_bridge_w = self.bridge_img.get_width()
 
         self.cloud1_img = self.resources.load_image("cloud1")
@@ -53,22 +53,23 @@ class Level1:
         self.cactus_img = self.resources.load_image("cactus")
         self.rock_img = self.resources.load_image("rock")
 
-        self._block_cache = {}
-        self._grass_cache = {}
+        self._block_cache = {} 
+        self._grass_cache = {} 
         self._bridge_cache = {}
-        
+
         exit_width = self.exit_img.get_width()
         exit_height = self.exit_img.get_height()
-        exit_x = 800 - exit_width
+        exit_x = 800 - exit_width 
         exit_y = 350 - exit_height
         self.exit_rect = pygame.Rect(exit_x, exit_y, exit_width, exit_height)
+
         lever_width = self.lever_up_img.get_width()
         lever_height = self.lever_up_img.get_height()
         lever_x = 100
         lever_y = 480
         self.lever_rect = pygame.Rect(lever_x, lever_y, lever_width, lever_height)
         self.is_lever_up = True
-        self._can_interact_lever = True 
+        self._can_interact_lever = True
         self._lever_cooldown_timer = 0
         self.completed = False
         self._current_platform_y = self.movable_platform_start_pos.y
@@ -96,7 +97,6 @@ class Level1:
         target_y = self.movable_platform_start_pos.y if self.is_lever_up else self.movable_platform_target_y
         distance_to_target = target_y - self._current_platform_y
         move_amount = self.movable_platform_speed * dt
-
         old_movable_platform_y = self.movable_platform_rect.y
 
         if distance_to_target > 0:
@@ -110,10 +110,10 @@ class Level1:
         if player_rect.colliderect(self.movable_platform_rect):
              if player_rect.bottom <= self.movable_platform_rect.top + abs(actual_platform_move_y) + 5:
                   player_rect.y += actual_platform_move_y
+
         if player_rect.colliderect(self.exit_rect):
             self.completed = True
-
-
+            
     def draw(self, screen: pygame.Surface):
         for rect in self.obstacles:
             h = rect.height
@@ -156,7 +156,7 @@ class Level1:
         for i in range(count):
             x = rect.x + i * orig_w
             screen.blit(tile_surf, (x, rect.y))
-
+            
         screen.blit(self.exit_img, self.exit_rect.topleft)
 
         if self.is_lever_up:

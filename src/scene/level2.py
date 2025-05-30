@@ -84,7 +84,6 @@ class Level2:
         self.bridge_platforms_rects.append(self.second_bridge_rect)
         self.obstacles.append(self.second_bridge_rect)
 
-        # Gambar
         self.block_img = self.resources.load_image("fence")
         self.grass_img = self.resources.load_image("grass")
         self.bridge_img = self.resources.load_image("bridge")
@@ -200,3 +199,40 @@ class Level2:
                 screen.blit(tile, (self.closed_door_rect.x + i*self.orig_block_w, self.closed_door_rect.y))
 
         screen.blit(self.door_img, self.exit_rect.topleft)
+
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    res = ResourceManager()
+    player = pygame.Rect(50, SCREEN_HEIGHT - 100, 40, 60)
+    level = Level2(player, res)
+
+    running = True
+    while running:
+        dt = clock.tick(60) / 1000.0
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        keys = pygame.key.get_pressed()
+        speed = 200
+        if keys[pygame.K_LEFT]:
+            player.x -= speed * dt
+        if keys[pygame.K_RIGHT]:
+            player.x += speed * dt
+        if keys[pygame.K_UP]:
+            player.y -= speed * dt
+        if keys[pygame.K_DOWN]:
+            player.y += speed * dt
+
+        level.update(dt, player)
+        level.draw(screen)
+        pygame.draw.rect(screen, (255, 0, 0), player)
+        pygame.display.flip()
+
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()

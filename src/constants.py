@@ -6,7 +6,6 @@ MOVABLE_WALL_SPEED = 100
 COLOR_SKY = (135, 206, 235)
 COLOR_BROWN = (139, 69, 19)
 COLOR_WHITE = (255, 255, 255)
-COLOR_GREY = (128,128,128)
 COLOR_HIGHLIGHT = (255, 215, 0)
 
 GRAVITY = 800
@@ -18,3 +17,7 @@ IMAGES_DIR = ASSETS_DIR + "/images"
 
 MENU_ITEMS = ["Start Game", "Options", "Exit"]
 LEVELS = ["Level 1","Level 2","Level 3"]
+
+ASSETS_DIR = "assets"
+IMAGES_DIR = ASSETS_DIR + "/images"
+SOUNDS_DIR = ASSETS_DIR + "/sounds"

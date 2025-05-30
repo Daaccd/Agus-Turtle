@@ -1,16 +1,17 @@
 import pygame
-from src.constants import LEVELS, COLOR_WHITE, COLOR_BROWN, COLOR_HIGHLIGHT, SCREEN_WIDTH
+from src.constants import LEVELS, COLOR_WHITE, COLOR_HIGHLIGHT, SCREEN_WIDTH
 
 class LevelSelect:
-    def __init__(self, screen):
+    def __init__(self, screen, game):
         self.screen   = screen
+        self.game = game
         self.selected = 0
-        self.font     = pygame.font.SysFont(None, 42)
+        self.font     = self.game.font_medium
 
         self.item_rects = []
         for idx, lvl in enumerate(LEVELS):
             surf = self.font.render(lvl, True, COLOR_WHITE)
-            rect = surf.get_rect(center=(SCREEN_WIDTH//2, 200 + idx * 60))
+            rect = surf.get_rect(center=(SCREEN_WIDTH//2, 250 + idx * 60))
             self.item_rects.append(rect)
 
     def handle_input(self, event):
@@ -44,7 +45,6 @@ class LevelSelect:
         pass
 
     def draw(self):
-        self.screen.fill(COLOR_BROWN)
         for idx, lvl in enumerate(LEVELS):
             color = COLOR_HIGHLIGHT if idx == self.selected else COLOR_WHITE
             surf = self.font.render(lvl, True, color)

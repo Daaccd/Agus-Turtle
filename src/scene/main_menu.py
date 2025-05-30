@@ -1,17 +1,27 @@
-# src/scene/main_menu.py
-
 import pygame
-from src.constants import MENU_ITEMS, COLOR_WHITE, COLOR_SKY, COLOR_HIGHLIGHT, SCREEN_WIDTH
+from src.constants import MENU_ITEMS, COLOR_WHITE, COLOR_HIGHLIGHT, SCREEN_WIDTH, SCREEN_HEIGHT
 
 class MainMenu:
-    def __init__(self, screen):
+    def __init__(self, screen, game): 
         self.screen   = screen
+        self.game = game 
         self.selected = 0
-        self.font     = pygame.font.SysFont(None, 48)
+        self.font     = self.game.font_medium
+        
+        try:
+            background_original = self.game.resources.load_image("background")
+            self.background_image = pygame.transform.scale(background_original, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        except SystemExit: 
+            print("Peringatan: Gambar latar belakang menu (background.jpeg) tidak ditemukan. Menggunakan warna solid.")
+            self.background_image = None 
+        except pygame.error as e:
+            print(f"Peringatan: Gagal memuat atau menskalakan gambar latar belakang menu: {e}. Menggunakan warna solid.")
+            self.background_image = None
+
         self.item_rects = []
         for idx, item in enumerate(MENU_ITEMS):
-            surf = self.font.render(item, True, COLOR_WHITE)
-            rect = surf.get_rect(center=(SCREEN_WIDTH//2, 200 + idx * 60))
+            surf = self.font.render(item, True, COLOR_WHITE) 
+            rect = surf.get_rect(center=(SCREEN_WIDTH//2, 250 + idx * 60)) 
             self.item_rects.append(rect)
 
     def handle_input(self, event):
@@ -31,7 +41,7 @@ class MainMenu:
                 if rect.collidepoint(mx, my):
                     self.selected = idx
 
-        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # kiri
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             mx, my = event.pos
             for idx, rect in enumerate(self.item_rects):
                 if rect.collidepoint(mx, my):
@@ -40,10 +50,14 @@ class MainMenu:
         return None
 
     def update(self):
-        pass
+        pass 
 
     def draw(self):
-        self.screen.fill(COLOR_SKY)
+        if self.background_image:
+            self.screen.blit(self.background_image, (0, 0))
+        else:
+            pass
+
         for idx, item in enumerate(MENU_ITEMS):
             color = COLOR_HIGHLIGHT if idx == self.selected else COLOR_WHITE
             surf = self.font.render(item, True, color)

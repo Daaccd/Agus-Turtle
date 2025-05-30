@@ -12,7 +12,6 @@ class OptionMenu:
         self.selected = 0
 
         self.item_rects = []
-        self.title_surf = self.font_title.render("Options", True, COLOR_WHITE)
         self.title_rect = self.title_surf.get_rect(center=(SCREEN_WIDTH // 2, 100))
 
         for idx, item in enumerate(self.options):
@@ -51,7 +50,7 @@ class OptionMenu:
 
     def update(self):
         pass
-
+        
     def draw(self):
         self.screen.fill((50, 50, 50))
 
