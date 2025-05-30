@@ -6,7 +6,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.png)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 ## Deskripsi Proyek
-Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman bermain yang pastinya menyenangkan dan menantang, pemain akan bermain sebagai Agus seekor kura-kura(turtle), dimana Agus berusaha untuk mencari tangan tetapi hal itu tidak akan mudah dicapai karena terdapat banyak rintangan yang akan menghalangi Agus untuk mencapai tujuannya.
+Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman bermain yang pastinya menyenangkan dan menantang, pemain akan bermain sebagai Agus seekor kura-kura(turtle), dimana agus harus berpetualang menuju tujuannya yang pastinya terdapat banyak rintangan yang akan menghalangi Agus, tentunya tidak mudah bagi Agus untuk mencapai tujuannya.
 
 ## Library
 [Python 3.11](https://www.python.org/downloads/release/python-3110) dan [Pygame](https://www.pygame.org) dibutuhkan untuk menjalankan aplikasi
@@ -34,12 +34,15 @@ Agus Turtle adalah sebuah game puzzle platformer yang memberikan pengalaman berm
     ```
 
 ## UML Class Diagram
+<p align="center">
+<img src="Assets/screenshot/uml_final.png" height="512px"/>
+</p>
 
 ## Kontributor
 |Nama|NIM|Peran|
 |-|-|-|
 |Brahmantio Abimayu|123140122|Project Leader, Programmer, Designer|
-|Roberto Charlos Sagala|123140113|Lead Programmer, Designer|
+|Roberto Charlos Sagala|123140113|Lead Programmer, Lead Designer|
 |Zacky Ghozi A|123140130|Programmer, Composer|
 |Danar Prayogo|123140015|Programmer, Designer|
 |Yeremia Situmorang|123140048|Programmer|
