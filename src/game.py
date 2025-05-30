@@ -25,12 +25,10 @@ class Game:
         self.clock  = pygame.time.Clock()
         self.state  = Game.STATE_MENU
 
-        # Resource Manager
         base_dir = Path(__file__).resolve().parent.parent
         img_dir  = base_dir / IMAGES_DIR
         self.resources = ResourceManager(img_dir)
 
-        # Muat semua SFX di awal
         self.sfx_jump  = self.resources.load_sound("jump")
         self.sfx_lever = self.resources.load_sound("lever")
         self.sfx_level_clear = self.resources.load_sound("game_clear")
@@ -38,28 +36,22 @@ class Game:
         self.sfx_key_pickup = self.resources.load_sound("key_pickup")
         self.sfx_lock_open = self.resources.load_sound("lock_open")
 
-        # Muat musik BGM
         self.bgm_main_menu = "main_menu_bgm"
         self.bgm_game_play = "game_play_bgm"
 
-        # Pengaturan Volume Awal
         self.master_volume = 0.5
         pygame.mixer.music.set_volume(self.master_volume)
 
-        # >>> TAMBAHKAN BARIS INI <<<
-        self.current_bgm = None # Inisialisasi variabel untuk melacak BGM yang sedang diputar
-        # >>> AKHIR TAMBAH <<<
+        self.current_bgm = None
 
         self._play_bgm(self.bgm_main_menu)
 
-        # Scenes dan level
         self.menu        = MainMenu(self.screen)
         self.level_sel   = LevelSelect(self.screen)
         self.option_menu = OptionMenu(self.screen)
         self.level       = None
         self.player      = None
 
-        # Font
         self.font_large = pygame.font.SysFont(None, 72)
         self.font_medium = pygame.font.SysFont(None, 48)
 
@@ -72,25 +64,20 @@ class Game:
 
     def _play_bgm(self, bgm_name: str):
         """Fungsi pembantu untuk memainkan BGM."""
-        # Jika musik yang diminta sudah diputar, jangan lakukan apa-apa
         if self.current_bgm == bgm_name and pygame.mixer.music.get_busy():
             return
 
         if self.resources.load_music(bgm_name):
             pygame.mixer.music.play(-1)
             pygame.mixer.music.set_volume(self.master_volume)
-            # >>> TAMBAHKAN BARIS INI <<<
-            self.current_bgm = bgm_name # Perbarui BGM yang sedang diputar
-            # >>> AKHIR TAMBAH <<<
+            self.current_bgm = bgm_name
         else:
             print(f"Warning: BGM {bgm_name} tidak dapat dimuat atau dimainkan.")
 
     def _stop_bgm(self):
         """Fungsi pembantu untuk menghentikan BGM."""
         pygame.mixer.music.stop()
-        # >>> TAMBAHKAN BARIS INI <<<
-        self.current_bgm = None # Atur BGM saat ini menjadi None ketika dihentikan
-        # >>> AKHIR TAMBAH <<<
+        self.current_bgm = None
 
     def _handle_events(self):
         for event in pygame.event.get():
@@ -135,11 +122,9 @@ class Game:
 
                 elif choice == "Back":
                     self.state = Game.STATE_MENU
-                    # >>> BARIS YANG DIMODIFIKASI <<<
                     if not pygame.mixer.music.get_busy() or self.current_bgm != self.bgm_main_menu:
                         self._stop_bgm()
                         self._play_bgm(self.bgm_main_menu)
-                    # >>> AKHIR MODIFIKASI <<<
 
             elif self.state == Game.STATE_PLAYING:
                 if event.type == pygame.KEYDOWN:
@@ -153,31 +138,25 @@ class Game:
                 if result == "Back":
                     self.state = Game.STATE_MENU
                     self.master_volume = pygame.mixer.music.get_volume()
-                    # >>> BARIS YANG DIMODIFIKASI <<<
                     if not pygame.mixer.music.get_busy() or self.current_bgm != self.bgm_main_menu:
                         self._stop_bgm()
                         self._play_bgm(self.bgm_main_menu)
-                    # >>> AKHIR MODIFIKASI <<<
 
             elif self.state == Game.STATE_GAMEOVER:
                  if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                       self.state = Game.STATE_MENU
-                      # >>> BARIS YANG DIMODIFIKASI <<<
                       if not pygame.mixer.music.get_busy() or self.current_bgm != self.bgm_main_menu:
                           self._stop_bgm()
                           self._play_bgm(self.bgm_main_menu)
-                      # >>> AKHIR MODIFIKASI <<<
                       self.level = None
                       self.player = None
 
             elif self.state == Game.STATE_LEVEL_CLEAR:
                  if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                       self.state = Game.STATE_LEVEL_SELECT
-                      # >>> BARIS YANG DIMODIFIKASI <<<
                       if not pygame.mixer.music.get_busy() or self.current_bgm != self.bgm_main_menu:
                           self._stop_bgm()
                           self._play_bgm(self.bgm_main_menu)
-                      # >>> AKHIR MODIFIKASI <<<
                       self.level = None
                       self.player = None
 

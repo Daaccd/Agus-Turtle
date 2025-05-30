@@ -8,7 +8,6 @@ class MainMenu:
         self.screen   = screen
         self.selected = 0
         self.font     = pygame.font.SysFont(None, 48)
-        # hitung rect per item sekali saja
         self.item_rects = []
         for idx, item in enumerate(MENU_ITEMS):
             surf = self.font.render(item, True, COLOR_WHITE)
@@ -16,7 +15,6 @@ class MainMenu:
             self.item_rects.append(rect)
 
     def handle_input(self, event):
-        # Keyboard
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 self.selected = (self.selected - 1) % len(MENU_ITEMS)
@@ -27,14 +25,12 @@ class MainMenu:
             elif event.key == pygame.K_RETURN:
                 return MENU_ITEMS[self.selected]
 
-        # Mouse movement → hover effect
         elif event.type == pygame.MOUSEMOTION:
             mx, my = event.pos
             for idx, rect in enumerate(self.item_rects):
                 if rect.collidepoint(mx, my):
                     self.selected = idx
 
-        # Mouse click → selection
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # kiri
             mx, my = event.pos
             for idx, rect in enumerate(self.item_rects):

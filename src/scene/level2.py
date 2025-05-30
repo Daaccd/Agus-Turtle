@@ -3,13 +3,11 @@ import math
 import os
 import sys
 
-# Konstanta
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 COLOR_SKY = (135, 206, 235)
 MOVABLE_WALL_SPEED = 100
 
-# Kelas untuk memuat gambar
 class ResourceManager:
     def __init__(self, asset_dir="assets"):
         self.asset_dir = asset_dir
@@ -24,7 +22,6 @@ class ResourceManager:
             self.cache[name] = pygame.image.load(path).convert_alpha()
         return self.cache[name]
 
-# Tuas
 class Lever(pygame.Rect):
     def __init__(self, x, y, width, height, up_img, down_img):
         super().__init__(x, y, width, height)
@@ -39,7 +36,6 @@ class Lever(pygame.Rect):
     def toggle(self):
         self.is_up = not self.is_up
 
-# Level 2
 class Level2:
     def __init__(self, player, resources: ResourceManager, sfx_lever=None):
         self.player = player
@@ -47,7 +43,6 @@ class Level2:
         self.player_start_pos = (50, SCREEN_HEIGHT - 100)
         self.sfx_lever = sfx_lever
 
-        # Gambar latar
         self.cloud1_img = self.resources.load_image("cloud1")
         self.cloud2_img = self.resources.load_image("cloud2")
         self.bush_img   = self.resources.load_image("bush")
@@ -68,7 +63,6 @@ class Level2:
             (self.cactus_img, (250, SCREEN_HEIGHT - 100)),
         ]
 
-        # Rintangan
         self.obstacles = []
         self.ground_rect = pygame.Rect(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)
         self.obstacles.append(self.ground_rect)
@@ -206,41 +200,3 @@ class Level2:
                 screen.blit(tile, (self.closed_door_rect.x + i*self.orig_block_w, self.closed_door_rect.y))
 
         screen.blit(self.door_img, self.exit_rect.topleft)
-
-# Jalankan untuk test
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    clock = pygame.time.Clock()
-    res = ResourceManager()
-    player = pygame.Rect(50, SCREEN_HEIGHT - 100, 40, 60)
-    level = Level2(player, res)
-
-    running = True
-    while running:
-        dt = clock.tick(60) / 1000.0
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        keys = pygame.key.get_pressed()
-        speed = 200
-        if keys[pygame.K_LEFT]:
-            player.x -= speed * dt
-        if keys[pygame.K_RIGHT]:
-            player.x += speed * dt
-        if keys[pygame.K_UP]:
-            player.y -= speed * dt
-        if keys[pygame.K_DOWN]:
-            player.y += speed * dt
-
-        level.update(dt, player)
-        level.draw(screen)
-        pygame.draw.rect(screen, (255, 0, 0), player)  # Gambar player
-        pygame.display.flip()
-
-    pygame.quit()
-
-if __name__ == "__main__":
-    main()

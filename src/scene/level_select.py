@@ -7,7 +7,6 @@ class LevelSelect:
         self.selected = 0
         self.font     = pygame.font.SysFont(None, 42)
 
-        # Precompute rect untuk setiap level
         self.item_rects = []
         for idx, lvl in enumerate(LEVELS):
             surf = self.font.render(lvl, True, COLOR_WHITE)
@@ -15,7 +14,6 @@ class LevelSelect:
             self.item_rects.append(rect)
 
     def handle_input(self, event):
-        # Keyboard navigasi
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 self.selected = (self.selected - 1) % len(LEVELS)
@@ -28,14 +26,12 @@ class LevelSelect:
             elif event.key == pygame.K_ESCAPE:
                 return "Back"
 
-        # Mouse hover
         elif event.type == pygame.MOUSEMOTION:
             mx, my = event.pos
             for idx, rect in enumerate(self.item_rects):
                 if rect.collidepoint(mx, my):
                     self.selected = idx
 
-        # Mouse click
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             mx, my = event.pos
             for idx, rect in enumerate(self.item_rects):
